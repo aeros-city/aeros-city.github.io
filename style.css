@@ -1,67 +1,160 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Arial', sans-serif; background: linear-gradient(135deg, #075c60, #322c0f); color: #fff; }
-header {
+/* ===============================
+   Aeros City StyleSheet
+   =============================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  background-color: #e0f7fa;
+  color: #333;
+}
+
+/* 背景動画 */
+.video-background {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  clip-path: circle(45%);
+  z-index: -1;
+}
+
+/* ロゴ＆メッセージ */
+.header-logo {
   position: absolute;
-  top: 20px; width: 100%;
-  display: flex; justify-content: space-between; padding: 0 30px;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: white;
+}
+
+.header-logo img {
+  width: 180px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.header-logo h1 {
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+/* ナビゲーションボタン（はじめに / MENU） */
+nav {
+  position: fixed;
+  top: 25px;
+  left: 25px;
+  right: 25px;
+  display: flex;
+  justify-content: space-between;
   z-index: 10;
 }
-.btn-circle {
-  width: 70px; height: 70px;
-  border-radius: 50%; background: black;
-  color: white; display: flex; align-items: center; justify-content: center;
-  font-weight: bold; cursor: pointer; position: relative;
-}
-.dropdown {
-  position: absolute;
-  top: 100%; left: 50%;
-  transform: translateX(-50%);
-  display: none; flex-direction: column;
-  background: white; color: black;
-  min-width: 180px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  border-radius: 8px; overflow: hidden;
-  z-index: 100;
-}
-.menu-right { left: auto; right: 0; transform: none; }
-.dropdown a {
-  padding: 12px 16px;
-  text-decoration: none;
-  color: #222;
-}
-.dropdown a:hover {
-  background: #f0f0f0;
-}
 
-.hero {
-  height: 100vh;
-  display: flex; align-items: center; justify-content: center;
+.nav-left, .nav-right {
   position: relative;
 }
-.hero-content {
-  text-align: center; z-index: 5;
-}
-.logo-img {
-  width: 180px; margin-bottom: 20px;
-}
-h1 { font-size: 2.2rem; text-shadow: 0 0 10px rgba(0,0,0,0.3); }
-.video-wrapper {
-  width: 60vw; max-width: 700px;
-  aspect-ratio: 16/9;
+
+.nav-button {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #00796b;
+  font-weight: bold;
+  border: none;
   border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  margin: 30px auto;
+  width: 85px;
+  height: 85px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-video { width: 100%; height: 100%; object-fit: cover; }
 
+.nav-button:hover {
+  background-color: #00796b;
+  color: white;
+}
+
+/* ▼ ドロップダウンメニュー（中央寄せ＋見切れ防止） */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.95);
+  color: #00796b;
+  min-width: 180px;
+  max-height: 70vh; /* 高さ制限 */
+  overflow-y: auto; /* スクロール可 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  z-index: 100;
+}
+
+.dropdown a {
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #00796b;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.dropdown a:hover {
+  background-color: #00796b;
+  color: white;
+}
+
+/* MENU側ドロップダウン */
+.menu-right {
+  left: auto;
+  right: 0;
+  transform: none;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+/* ▼ コンテンツエリア非表示（ルール以外は見せない） */
 #content-area {
-  padding: 60px 20px;
-  max-width: 900px;
-  margin: 0 auto;
-  background: #fff;
-  color: #111;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30vh;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  box-sizing: border-box;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  overflow-y: auto;
+  z-index: 5;
 }
 
+/* 共通テキストスタイル */
+h2 {
+  margin-top: 0;
+  color: #00796b;
+}
+
+p {
+  line-height: 1.6;
+}
+
+/* スクロールバーのデザイン */
+.dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+.dropdown::-webkit-scrollbar-thumb {
+  background: #00796b;
+  border-radius: 10px;
+}
