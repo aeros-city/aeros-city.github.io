@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Aeros City</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="btn-circle" id="btn-intro">はじめに
+      <div class="dropdown" id="dropdown-intro">
+        <a href="#" class="nav-link" data-page="fivem">FiveM導入・街参加方法</a>
+        <a href="#" class="nav-link" data-page="rules">ルール</a>
+        <a href="#" class="nav-link" data-page="faq">よくある質問</a>
+      </div>
+    </div>
+    <div class="btn-circle" id="btn-menu">MENU
+      <div class="dropdown menu-right" id="dropdown-menu">
+        <a href="#" class="nav-link" data-page="home">ホーム</a>
+        <a href="#" class="nav-link" data-page="about">この街について</a>
+        <a href="#" class="nav-link" data-page="contact">連絡</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="hero">
+    <div class="hero-content">
+      <img src="assets/aerosicon.png" alt="Aeros City ロゴ" class="logo-img">
+      <h1>Aeros City へようこそ</h1>
+      <div class="video-wrapper">
+        <video src="assets/aerosvideo.mp4" autoplay muted loop playsinline></video>
+      </div>
+    </div>
+  </main>
+
+  <!-- 切り替え用のメイン表示エリア -->
+  <section id="content-area"></section>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
