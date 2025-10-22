@@ -1,43 +1,41 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aeros City</title>
-  <link rel="icon" type="image/png" href="assets/aerosicon.png">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aeros City へようこそ</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
   <header>
-    <div class="btn-circle" id="btn-intro">はじめに
-      <div class="dropdown" id="dropdown-intro">
-        <a href="#" class="nav-link" data-page="fivem">FiveM導入・街参加方法</a>
-        <a href="#" class="nav-link" data-page="rules">ルール</a>
-        <a href="#" class="nav-link" data-page="faq">よくある質問</a>
-      </div>
+    <div class="logo">
+      <img src="assets/aerosicon.png" alt="Aeros Icon" />
+      <span class="logo-text">Aeros City</span>
     </div>
-    <div class="btn-circle" id="btn-menu">MENU
-      <div class="dropdown menu-right" id="dropdown-menu">
-        <a href="#" class="nav-link" data-page="home">ホーム</a>
-        <a href="#" class="nav-link" data-page="about">この街について</a>
-        <a href="#" class="nav-link" data-page="contact">連絡</a>
+    <nav class="top-nav">
+      <div class="menu">メニュー ▾
+        <ul class="dropdown">
+          <li><a href="data/fivem.html">FiveM まとめ</a></li>
+          <li><a href="data/home.html">飲食店一覧</a></li>
+        </ul>
       </div>
-    </div>
+      <div class="start">はじめに ▾
+        <ul class="dropdown">
+          <li><a href="data/home.html">Aeros City の紹介</a></li>
+        </ul>
+      </div>
+    </nav>
   </header>
 
-  <main class="hero">
-    <div class="hero-content">
-      <img src="assets/aerosicon.png" alt="Aeros City ロゴ" class="logo-img">
-      <h1>Aeros City へようこそ</h1>
-      <div class="video-wrapper">
-        <video class="video-background" src="assets/aerosvideo.mp4" autoplay muted loop playsinline></video>
+  <main>
+    <h1 class="welcome-pop">🎉 ようこそ！Aeros Cityへ！🎉</h1>
+    
+    <div class="video-wrapper">
+      <video src="assets/aerosvideo.mp4" autoplay loop muted></video>
     </div>
-    </div>
+    
+    <p class="catch-copy">風のように自由な街、ここがAeros City。</p>
   </main>
-
-  <!-- 切り替え用のメイン表示エリア -->
-  <section id="content-area"></section>
-
-  <script src="script.js"></script>
 </body>
 </html>

@@ -1,158 +1,110 @@
-/* ===============================
-   Aeros City StyleSheet
-   =============================== */
-
-@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap');
-
-body {
+/* リセット */
+* {
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  font-family: 'Zen Maru Gothic', sans-serif;
-  background-color: #e0f7fa;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #d0f0f7, #f0faff);
   color: #333;
-}
-
-/* ▼ 中央に丸く表示される動画 */
-.video-background {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 80vmin;
-  height: 80vmin;
-  object-fit: cover;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  clip-path: circle(40%);
-  z-index: -1;
-  opacity: 0.9;
-  pointer-events: none;
-}
-
-/* ロゴ＆メッセージ */
-.header-logo {
-  position: absolute;
-  top: 15%;
-  left: 50%;
-  transform: translateX(-50%);
   text-align: center;
-  color: white;
 }
 
-.header-logo img {
-  width: 180px;
-  height: auto;
-  margin-bottom: 10px;
-}
-
-.header-logo h1 {
-  font-size: 1.8rem;
-  letter-spacing: 2px;
-  margin: 0;
-}
-
-/* ナビゲーションボタン（はじめに / MENU） */
 header {
-  position: fixed;
-  top: 25px;
-  left: 25px;
-  right: 25px;
   display: flex;
   justify-content: space-between;
-  z-index: 10;
+  padding: 10px 20px;
+  background-color: #a0e7f7;
+  align-items: center;
+  position: sticky;
+  top: 0;
 }
 
-.btn-circle {
-  position: relative;
-  background-color: rgba(255, 255, 255, 0.8);
-  color: #00796b;
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+}
+
+.logo-text {
+  font-size: 1.5rem;
   font-weight: bold;
-  border-radius: 50%;
-  width: 85px;
-  height: 85px;
-  font-size: 0.9rem;
-  text-align: center;
-  line-height: 85px;
+  color: #05627d;
+}
+
+.top-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.menu, .start {
+  position: relative;
   cursor: pointer;
-  transition: all 0.3s ease;
+  font-weight: bold;
+  color: #05627d;
 }
 
-.btn-circle:hover {
-  background-color: #00796b;
-  color: white;
-}
-
-/* ▼ ドロップダウンメニュー */
 .dropdown {
   position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  display: none;
-  flex-direction: column;
-  background: rgba(255, 255, 255, 0.95);
-  color: #00796b;
-  min-width: 180px;
-  max-height: 70vh;
-  overflow-y: auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  z-index: 100;
-}
-
-.dropdown a {
+  top: 30px;
+  background-color: white;
+  list-style: none;
   padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  color: #00796b;
-  font-weight: bold;
-  transition: background 0.2s;
-}
-
-.dropdown a:hover {
-  background-color: #00796b;
-  color: white;
-}
-
-/* MENU側ドロップダウン（右寄せ） */
-.menu-right {
-  left: auto;
-  right: 0;
-  transform: none;
-}
-
-/* ▼ コンテンツエリア */
-#content-area {
+  border: 1px solid #ccc;
   display: none;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  z-index: 10;
+  border-radius: 6px;
+}
+
+.menu:hover .dropdown, .start:hover .dropdown {
+  display: block;
+}
+
+.dropdown li {
+  margin: 5px 0;
+}
+
+.dropdown li a {
+  color: #05627d;
+  text-decoration: none;
+}
+
+.welcome-pop {
+  font-size: 2rem;
+  margin: 30px 0;
+  animation: popUp 1s ease-out;
+}
+
+@keyframes popUp {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.video-wrapper {
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0, 128, 255, 0.3);
+}
+
+video {
   width: 100%;
-  height: 30vh;
-  background: rgba(255, 255, 255, 0.95);
-  padding: 20px;
-  box-sizing: border-box;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  overflow-y: auto;
-  z-index: 5;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* 共通テキストスタイル */
-h2 {
-  margin-top: 0;
-  color: #00796b;
-}
-
-p {
-  line-height: 1.6;
-}
-
-/* スクロールバーのデザイン */
-.dropdown::-webkit-scrollbar {
-  width: 6px;
-}
-.dropdown::-webkit-scrollbar-thumb {
-  background: #00796b;
-  border-radius: 10px;
+.catch-copy {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #444;
+  font-style: italic;
 }
