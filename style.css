@@ -13,18 +13,20 @@ body {
   color: #333;
 }
 
-/* 背景動画 */
+/* ▼ 中央に丸く表示される動画 */
 .video-background {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 100vw;
-  height: 100vh;
+  width: 80vmin;
+  height: 80vmin;
   object-fit: cover;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  clip-path: circle(45%);
+  clip-path: circle(40%);
   z-index: -1;
+  opacity: 0.9;
+  pointer-events: none;
 }
 
 /* ロゴ＆メッセージ */
@@ -50,7 +52,7 @@ body {
 }
 
 /* ナビゲーションボタン（はじめに / MENU） */
-nav {
+header {
   position: fixed;
   top: 25px;
   left: 25px;
@@ -60,29 +62,27 @@ nav {
   z-index: 10;
 }
 
-.nav-left, .nav-right {
+.btn-circle {
   position: relative;
-}
-
-.nav-button {
   background-color: rgba(255, 255, 255, 0.8);
   color: #00796b;
   font-weight: bold;
-  border: none;
   border-radius: 50%;
   width: 85px;
   height: 85px;
   font-size: 0.9rem;
+  text-align: center;
+  line-height: 85px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.nav-button:hover {
+.btn-circle:hover {
   background-color: #00796b;
   color: white;
 }
 
-/* ▼ ドロップダウンメニュー（中央寄せ＋見切れ防止） */
+/* ▼ ドロップダウンメニュー */
 .dropdown {
   position: absolute;
   top: 100%;
@@ -93,8 +93,8 @@ nav {
   background: rgba(255, 255, 255, 0.95);
   color: #00796b;
   min-width: 180px;
-  max-height: 70vh; /* 高さ制限 */
-  overflow-y: auto; /* スクロール可 */
+  max-height: 70vh;
+  overflow-y: auto;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   z-index: 100;
@@ -114,16 +114,14 @@ nav {
   color: white;
 }
 
-/* MENU側ドロップダウン */
+/* MENU側ドロップダウン（右寄せ） */
 .menu-right {
   left: auto;
   right: 0;
   transform: none;
-  max-height: 70vh;
-  overflow-y: auto;
 }
 
-/* ▼ コンテンツエリア非表示（ルール以外は見せない） */
+/* ▼ コンテンツエリア */
 #content-area {
   display: none;
   position: absolute;
@@ -158,4 +156,3 @@ p {
   background: #00796b;
   border-radius: 10px;
 }
-
