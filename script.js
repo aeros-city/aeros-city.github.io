@@ -1,46 +1,26 @@
-// ▼ ドロップダウンの開閉処理
-function setupDropdown(buttonId, dropdownId) {
-  const button = document.getElementById(buttonId);
-  const dropdown = document.getElementById(dropdownId);
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll(".nav-link");
+  const contentArea = document.getElementById("content-area");
 
-  button.addEventListener('click', () => {
-    const isOpen = dropdown.style.display === 'flex';
-    document.querySelectorAll('.dropdown').forEach(d => d.style.display = 'none');
-    dropdown.style.display = isOpen ? 'none' : 'flex';
-  });
-}
-setupDropdown('btn-intro', 'dropdown-intro');
-setupDropdown('btn-menu', 'dropdown-menu');
+  // ページ切り替え処理
+  links.forEach(link => {
+    link.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const page = e.target.getAttribute("data-page");
 
-document.addEventListener('click', (e) => {
-  if (!e.target.closest('.btn-circle')) {
-    document.querySelectorAll('.dropdown').forEach(d => d.style.display = 'none');
-  }
-});
+      try {
+        // dataフォルダ内のページを取得
+        const response = await fetch(`data/${page}.html`);
+        if (!response.ok) throw new Error("ページが見つかりません");
+        const html = await response.text();
+        contentArea.innerHTML = html;
 
-// ▼ ページ切り替え（同階層のHTMLを読み込み）
-async function loadPage(pageName) {
-  const content = document.getElementById('content-area');
-  try {
-    const res = await fetch(`${pageName}.html`); // ← 「data/」を削除
-    const html = await res.text();
-    content.innerHTML = html;
-    content.style.display = "block"; // 読み込まれたときだけ表示
-    window.scrollTo(0, 0);
-  } catch {
-    content.innerHTML = `<p>ページが見つかりません。</p>`;
-    content.style.display = "block";
-  }
-}
-
-// ▼ ナビリンクにイベント登録
-document.querySelectorAll('.nav-link').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const page = e.target.getAttribute('data-page');
-    loadPage(page);
+        // スクロール位置リセット
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } catch (error) {
+        contentArea.innerHTML = `<p>ページを読み込めませんでした。</p>`;
+        console.error(error);
+      }
+    });
   });
 });
-
-// ▼ 初期表示（ホーム）
-loadPage('home');
