@@ -55,32 +55,48 @@ header {
   position: relative;
 }
 
-.dropdown-wrap .dropdown {
-  position: absolute;
-  display: none;
-  top: 30px;
-  left: 0;
-  background: white;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  z-index: 999;
-  min-width: 180px;
-}
-
 .dropdown-wrap:hover .dropdown {
   display: block;
 }
 
+.menu {
+  font-weight: bold;
+  color: #05627d;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0; /* ✅ ここがポイント！右端にいても画面外に出ないように */
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  z-index: 999;
+  min-width: 180px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .dropdown li {
+  list-style: none;
   margin: 5px 0;
 }
 
 .dropdown a {
-  color: #05627d;
   text-decoration: none;
+  color: #05627d;
   display: block;
+  transition: background 0.3s ease;
 }
+
+.dropdown a:hover {
+  background-color: #e0f7ff;
+  border-radius: 4px;
+}
+
 
 
 .welcome-pop {
