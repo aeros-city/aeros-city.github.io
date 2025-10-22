@@ -1,4 +1,4 @@
-// ドロップダウン切り替え
+// ▼ ドロップダウンの開閉処理
 function setupDropdown(buttonId, dropdownId) {
   const button = document.getElementById(buttonId);
   const dropdown = document.getElementById(dropdownId);
@@ -11,26 +11,29 @@ function setupDropdown(buttonId, dropdownId) {
 }
 setupDropdown('btn-intro', 'dropdown-intro');
 setupDropdown('btn-menu', 'dropdown-menu');
+
 document.addEventListener('click', (e) => {
   if (!e.target.closest('.btn-circle')) {
     document.querySelectorAll('.dropdown').forEach(d => d.style.display = 'none');
   }
 });
 
-// ページ読み込み
+// ▼ ページ切り替え（同階層のHTMLを読み込み）
 async function loadPage(pageName) {
   const content = document.getElementById('content-area');
   try {
-    const res = await fetch(`data/${pageName}.html`);
+    const res = await fetch(`${pageName}.html`); // ← 「data/」を削除
     const html = await res.text();
     content.innerHTML = html;
+    content.style.display = "block"; // 読み込まれたときだけ表示
     window.scrollTo(0, 0);
   } catch {
     content.innerHTML = `<p>ページが見つかりません。</p>`;
+    content.style.display = "block";
   }
 }
 
-// ナビリンクにイベント登録
+// ▼ ナビリンクにイベント登録
 document.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
@@ -39,8 +42,5 @@ document.querySelectorAll('.nav-link').forEach(link => {
   });
 });
 
-// 初期表示
+// ▼ 初期表示（ホーム）
 loadPage('home');
-
-
-
